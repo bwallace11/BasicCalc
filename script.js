@@ -6,7 +6,7 @@
             display.textContent = currentValue;
         }
 
-        function appendNumber(num) {
+        function aNumber(num) {
             if (currentValue === '0' || currentValue === 'Error') {
                 currentValue = num;
             } else {
@@ -15,7 +15,7 @@
             updateDisplay();
         }
 
-        function appendOperator(op) {
+        function aOperator(op) {
             if (currentValue === 'Error') {
                 currentValue = '0';
             }
