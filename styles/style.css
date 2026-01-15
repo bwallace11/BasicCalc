@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #0f1320;
-  color: #ffffff;
+  background-color: #0f1224;
+  color: #fff;
   display: flex;
   justify-content: center;
   padding: 40px;
@@ -9,7 +9,7 @@ body {
 
 .story-container {
   max-width: 600px;
-  background-color: #1a1f33;
+  background: #1b1f36;
   padding: 20px;
   border-radius: 8px;
 }
@@ -23,11 +23,16 @@ h1, h2 {
   width: 100%;
   border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.story-image img.glow {
+/* Effects */
+.zoom {
   transform: scale(1.05);
+}
+
+.glow {
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
 }
 
 .story-text {
@@ -39,6 +44,7 @@ h1, h2 {
   display: none;
   font-style: italic;
   margin-top: 8px;
+  opacity: 0.85;
 }
 
 .story-progress {
@@ -51,12 +57,12 @@ h1, h2 {
 .dot {
   width: 10px;
   height: 10px;
-  background-color: #555;
+  background: #555;
   border-radius: 50%;
 }
 
 .dot.active {
-  background-color: #ff6b9a;
+  background: #ff6b9a;
 }
 
 .name-input {

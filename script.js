@@ -7,16 +7,16 @@ const dots = document.querySelectorAll(".dot");
 const nameInput = document.querySelector("#name");
 const saveNameBtn = document.querySelector("#saveName");
 
-// Story captions
+// Story text
 const captions = [
-  "Mothman waits near the bridge on Valentine’s night.",
-  "Nessie surfaces from the lake, right on time.",
-  "They share stories about being misunderstood.",
-  "The night feels calm and safe for once.",
+  "Mothman waits nervously near the bridge on Valentine’s night.",
+  "Nessie rises from the lake, right on time.",
+  "They talk about being misunderstood.",
+  "The night feels calm and warm for once.",
   "They promise to meet again next Valentine’s Day."
 ];
 
-// Track story step
+// Track step (state)
 let currentStep = localStorage.getItem("storyStep")
   ? Number(localStorage.getItem("storyStep"))
   : 0;
@@ -27,11 +27,13 @@ if (savedName) {
   nameInput.value = savedName;
 }
 
-// Initial display
+// Initial render
 updateStory();
 
-// Image click
+// CLICK = MAIN EVENT FLOW
 image.addEventListener("click", function () {
+
+  // advance state
   currentStep++;
 
   if (currentStep > 4) {
@@ -39,6 +41,8 @@ image.addEventListener("click", function () {
   }
 
   localStorage.setItem("storyStep", currentStep);
+
+  // update UI
   updateStory();
 });
 
@@ -48,7 +52,7 @@ saveNameBtn.addEventListener("click", function () {
   updateStory();
 });
 
-// Update UI
+// Update everything
 function updateStory() {
   const name = nameInput.value || "Someone";
 
@@ -56,18 +60,21 @@ function updateStory() {
 
   image.src = `assets/images/image-${currentStep + 1}.jpg`;
 
-  // Reveal hidden text on step 3
-  if (currentStep === 2) {
+  // reset effects
+  image.classList.remove("zoom", "glow");
+  hiddenText.classList.add("hidden");
+
+  // step-specific interactions
+  if (currentStep === 1) {
     hiddenText.classList.remove("hidden");
-  } else {
-    hiddenText.classList.add("hidden");
   }
 
-  // Visual effect on step 4
+  if (currentStep === 2) {
+    image.classList.add("zoom");
+  }
+
   if (currentStep === 3) {
     image.classList.add("glow");
-  } else {
-    image.classList.remove("glow");
   }
 
   updateProgress();
