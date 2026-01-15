@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mothman & Nessie Valentine</title>
-  <link rel="stylesheet" href="styles/style.css">
+  <meta charset="UTF-8" />
+  <title>Mothman Valentine</title>
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
 
 <main class="story-container">
 
-  <h1>Mothman & Nessie</h1>
-  <h2>A Valentine’s Date</h2>
-
-  <div class="name-input">
-    <label>Your name:</label>
-    <input type="text" id="name" placeholder="Enter name">
-    <button id="saveName">Save</button>
-  </div>
-
   <div class="story-image">
-    <img
-      id="storyImage"
-      src="assets/images/image-1.jpg"
-      alt="Mothman waits near a bridge at night"
-    >
+    <img 
+      src="assets/images/image-1.jpg" 
+      alt="Mothman alone on Valentine's Day"
+      id="story-image"
+    />
   </div>
 
   <div class="story-text">
-    <p id="story-caption">Click the image to begin.</p>
-    <p id="hidden-text" class="hidden">
+    <p id="story-caption">Click the image to begin the story.</p>
+  </div>
+
+  <div class="story-progress">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

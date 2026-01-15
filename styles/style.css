@@ -1,73 +1,48 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #0f1224;
-  color: #fff;
+  background-color: #120f1a;
+  color: #f5f5f5;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .story-container {
-  max-width: 600px;
-  background: #1b1f36;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-h1, h2 {
+  width: 320px;
   text-align: center;
-  margin: 4px 0;
 }
 
 .story-image img {
   width: 100%;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Effects */
-.zoom {
-  transform: scale(1.05);
-}
-
-.glow {
-  box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+.story-image img.glow {
+  box-shadow: 0 0 20px pink;
+  transform: scale(1.03);
 }
 
 .story-text {
-  text-align: center;
-  margin-top: 16px;
-}
-
-.hidden {
-  display: none;
-  font-style: italic;
-  margin-top: 8px;
-  opacity: 0.85;
+  margin-top: 12px;
+  min-height: 60px;
 }
 
 .story-progress {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
+  margin-top: 10px;
 }
 
 .dot {
-  width: 10px;
   height: 10px;
-  background: #555;
+  width: 10px;
+  background-color: #555;
   border-radius: 50%;
+  display: inline-block;
+  margin: 4px;
 }
 
 .dot.active {
-  background: #ff6b9a;
-}
-
-.name-input {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-bottom: 16px;
+  background-color: pink;
 }
