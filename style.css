@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f7f4f8;
+  background-color: #0f1320;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   padding: 40px;
@@ -8,13 +9,14 @@ body {
 
 .story-container {
   max-width: 600px;
-  background: white;
+  background-color: #1a1f33;
   padding: 20px;
   border-radius: 8px;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
+  margin: 4px 0;
 }
 
 .story-image img {
@@ -24,36 +26,37 @@ h1 {
   transition: transform 0.3s ease;
 }
 
-/* visual effect */
-.story-image img.zoom {
+.story-image img.glow {
   transform: scale(1.05);
 }
 
 .story-text {
-  margin-top: 16px;
   text-align: center;
+  margin-top: 16px;
 }
 
 .hidden {
   display: none;
+  font-style: italic;
+  margin-top: 8px;
 }
 
 .story-progress {
   display: flex;
   justify-content: center;
-  margin-top: 16px;
   gap: 8px;
+  margin-top: 16px;
 }
 
 .dot {
   width: 10px;
   height: 10px;
-  background: #ccc;
+  background-color: #555;
   border-radius: 50%;
 }
 
 .dot.active {
-  background: #d94b7d;
+  background-color: #ff6b9a;
 }
 
 .name-input {

@@ -1,4 +1,4 @@
-// Find elements
+// Select elements
 const image = document.querySelector("#storyImage");
 const caption = document.querySelector("#story-caption");
 const hiddenText = document.querySelector("#hidden-text");
@@ -7,30 +7,30 @@ const dots = document.querySelectorAll(".dot");
 const nameInput = document.querySelector("#name");
 const saveNameBtn = document.querySelector("#saveName");
 
-// Story text
+// Story captions
 const captions = [
-  "Click the image to begin the story.",
-  "A quiet morning. A message sent just to check in.",
-  "A shared laugh over something small.",
-  "Being there when the day gets heavy.",
-  "A reminder that connection matters."
+  "Mothman waits near the bridge on Valentine’s night.",
+  "Nessie surfaces from the lake, right on time.",
+  "They share stories about being misunderstood.",
+  "The night feels calm and safe for once.",
+  "They promise to meet again next Valentine’s Day."
 ];
 
-// Track step
-let currentStep = localStorage.getItem("step")
-  ? Number(localStorage.getItem("step"))
+// Track story step
+let currentStep = localStorage.getItem("storyStep")
+  ? Number(localStorage.getItem("storyStep"))
   : 0;
 
 // Load saved name
-const savedName = localStorage.getItem("name");
+const savedName = localStorage.getItem("userName");
 if (savedName) {
   nameInput.value = savedName;
 }
 
-// Initial render
+// Initial display
 updateStory();
 
-// Click interaction
+// Image click
 image.addEventListener("click", function () {
   currentStep++;
 
@@ -38,21 +38,21 @@ image.addEventListener("click", function () {
     currentStep = 0;
   }
 
-  localStorage.setItem("step", currentStep);
-
+  localStorage.setItem("storyStep", currentStep);
   updateStory();
 });
 
 // Save name
 saveNameBtn.addEventListener("click", function () {
-  localStorage.setItem("name", nameInput.value);
+  localStorage.setItem("userName", nameInput.value);
   updateStory();
 });
 
+// Update UI
 function updateStory() {
   const name = nameInput.value || "Someone";
 
-  caption.textContent = captions[currentStep] + ` — ${name}`;
+  caption.textContent = captions[currentStep] + " — " + name;
 
   image.src = `assets/images/image-${currentStep + 1}.jpg`;
 
@@ -63,11 +63,11 @@ function updateStory() {
     hiddenText.classList.add("hidden");
   }
 
-  // Add visual effect on step 4
+  // Visual effect on step 4
   if (currentStep === 3) {
-    image.classList.add("zoom");
+    image.classList.add("glow");
   } else {
-    image.classList.remove("zoom");
+    image.classList.remove("glow");
   }
 
   updateProgress();
