@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Mothman Valentine</title>
-  <link rel="stylesheet" href="styles/style.css" />
+  <title>Mothman & Nessie Valentine</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -12,14 +12,16 @@
   <div class="story-image">
     <img 
       src="assets/images/image-1.jpg" 
-      alt="Mothman alone on Valentine's Day"
+      alt="Mothman waiting on Valentine’s Day"
       id="story-image"
     />
   </div>
 
   <div class="story-text">
-    <p id="story-caption">Click the image to begin the story.</p>
+    <p id="story-caption">Click the image to start the date.</p>
   </div>
+
+  <button id="reset-btn">Reset Story</button>
 
   <div class="story-progress">
     <span class="dot active"></span>
@@ -31,6 +33,15 @@
 
 </main>
 
-<script src="script.js"></script>
+<!-- Name Popup -->
+<div class="modal hidden" id="name-modal">
+  <div class="modal-content">
+    <p>Who should Mothman dedicate this Valentine to?</p>
+    <input type="text" id="name-input" placeholder="Your name" />
+    <button id="submit-name">Submit</button>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
 </body>
 </html>

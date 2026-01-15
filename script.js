@@ -1,13 +1,18 @@
 const image = document.querySelector('#story-image');
 const caption = document.querySelector('#story-caption');
 const dots = document.querySelectorAll('.dot');
+const resetBtn = document.querySelector('#reset-btn');
+
+const modal = document.querySelector('#name-modal');
+const nameInput = document.querySelector('#name-input');
+const submitName = document.querySelector('#submit-name');
 
 const captions = [
-  "Click the image to begin the story.",
-  "Mothman hated Valentine’s Day. Too many feelings. Too many cards.",
-  "At Loch Ness, he finally met Nessie. She brought snacks.",
-  "They shared stories, laughs, and fears by the water.",
-  "Love doesn’t have to be perfect to be real."
+  "Click the image to start the date.",
+  "Mothman was nervous. Valentine’s Day always made his wings shake.",
+  "At Loch Ness, Nessie waved. She planned the whole thing.",
+  "They talked, laughed, and shared snacks by the water.",
+  "Some connections feel strange but safe at the same time."
 ];
 
 let currentStep = 0;
@@ -21,9 +26,33 @@ image.addEventListener('click', function () {
 
     image.classList.toggle('glow');
     updateProgress(currentStep);
-
     localStorage.setItem('storyStep', currentStep);
+  } else {
+    modal.classList.remove('hidden');
   }
+});
+
+submitName.addEventListener('click', function () {
+  const name = nameInput.value.trim();
+
+  if (name !== "") {
+    caption.textContent = `Happy Valentine’s Day, ${name}! 💕`;
+    modal.classList.add('hidden');
+    localStorage.setItem('valentineName', name);
+  }
+});
+
+resetBtn.addEventListener('click', function () {
+  currentStep = 0;
+
+  caption.textContent = captions[0];
+  image.src = "assets/images/image-1.jpg";
+
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[0].classList.add('active');
+
+  localStorage.clear();
+  nameInput.value = "";
 });
 
 function updateProgress(step) {
@@ -36,11 +65,17 @@ function updateProgress(step) {
   });
 }
 
+/* Restore state */
 const savedStep = localStorage.getItem('storyStep');
+const savedName = localStorage.getItem('valentineName');
 
 if (savedStep !== null) {
   currentStep = Number(savedStep);
   caption.textContent = captions[currentStep];
   image.src = `assets/images/image-${currentStep + 1}.jpg`;
   updateProgress(currentStep);
+}
+
+if (savedName) {
+  caption.textContent = `Happy Valentine’s Day, ${savedName}! 💕`;
 }

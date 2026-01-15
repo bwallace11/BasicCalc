@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #120f1a;
-  color: #f5f5f5;
+  background-color: #150f24;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,25 +9,34 @@ body {
 }
 
 .story-container {
-  width: 320px;
+  width: 330px;
   text-align: center;
 }
 
 .story-image img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 14px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .story-image img.glow {
-  box-shadow: 0 0 20px pink;
-  transform: scale(1.03);
+  box-shadow: 0 0 25px #ff9ecf;
+  transform: scale(1.04);
 }
 
 .story-text {
-  margin-top: 12px;
+  margin: 12px 0;
   min-height: 60px;
+}
+
+button {
+  background-color: #ff9ecf;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 6px;
 }
 
 .story-progress {
@@ -40,9 +49,36 @@ body {
   background-color: #555;
   border-radius: 50%;
   display: inline-block;
-  margin: 4px;
+  margin: 3px;
 }
 
 .dot.active {
-  background-color: pink;
+  background-color: #ff9ecf;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #221933;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.modal input {
+  padding: 6px;
+  margin-top: 8px;
+  width: 80%;
+}
+
+.hidden {
+  display: none;
 }
