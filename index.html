@@ -2,59 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mothman + Nessie Valentine</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mothman + Nessie Valentine Date</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <div class="wrap sparkle" id="app">
-    <div class="confetti" id="confetti"></div>
-
+  <div class="wrap" id="app">
     <header>
-      <h1>Mothman + Nessie: Valentine’s Date Night</h1>
+      <div>
+        <h1>Mothman + Nessie: Valentine Date Night</h1>
+        <p class="sub">Click the image. Make choices. Try not to ruin the vibe.</p>
+      </div>
 
       <div class="controls">
-        <label>
-          Your name:
-          <input id="nameInput" type="text" placeholder="Your name" />
+        <label class="label">
+          Your name
+          <input id="nameInput" type="text" placeholder="Brittany, etc." maxlength="24" />
         </label>
-        <button id="saveNameBtn">Save name</button>
+        <button id="saveNameBtn">Save</button>
         <button id="resetBtn" class="secondary">Reset</button>
       </div>
     </header>
 
-    <main>
-      <div class="stage">
-        <div class="image-card" id="imageCard">
-          <img id="storyImage" alt="Story scene" />
-          <div class="hint">Click the image to continue the story</div>
+    <main class="stage">
+      <section class="left">
+        <div class="imageCard" id="imageCard">
+          <div class="confetti" id="confetti"></div>
+          <img id="storyImage" alt="Story scene image" />
+          <div class="tapHint" id="tapHint">Click the image</div>
+          <div class="heartsLayer" id="heartsLayer"></div>
         </div>
 
-        <div class="text-card">
-          <p class="step" id="stepLabel"></p>
-          <p id="storyText"></p>
-          <p id="secretText"></p>
-
-          <div class="buttons">
-            <button id="revealBtn" class="secondary">Reveal note</button>
-            <button id="toggleSparkleBtn" class="secondary">Toggle sparkle</button>
+        <div class="meter">
+          <div class="meterTop">
+            <span id="meterLabel">Mood Meter</span>
+            <span id="moodValue">50</span>
+          </div>
+          <div class="bar">
+            <div class="fill" id="moodFill"></div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section class="right">
+        <p class="step" id="stepLabel"></p>
+        <h2 id="sceneTitle"></h2>
+        <p id="storyText"></p>
+
+        <div class="box" id="secretBox">
+          <div class="boxTitle">Secret Note</div>
+          <p id="secretText"></p>
+        </div>
+
+        <div class="actions" id="actions"></div>
+
+        <footer class="footer">
+          <span id="saveStatus">Saved.</span>
+        </footer>
+      </section>
     </main>
-
-    <footer>
-      <span id="saveStatus">Progress not saved yet</span>
-    </footer>
-
-    <!-- Optional sound -->
-    <audio id="clickSound" src="click.mp3" preload="auto"></audio>
   </div>
 
-  <!-- JavaScript -->
+  <audio id="clickSound" src="click.mp3" preload="auto"></audio>
+
   <script src="script.js"></script>
 </body>
 </html>
