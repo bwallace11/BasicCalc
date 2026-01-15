@@ -1,245 +1,64 @@
-:root{
-  --bg:#0b0b14;
-  --card:#151528;
-  --muted:#b7b7d6;
-  --text:#f2f2ff;
-  --hot:#ff4d88;
-  --blue:#7cdbff;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f4f8;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
 }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui, Arial, sans-serif;
-  background: radial-gradient(circle at top, #1a1a3a, var(--bg) 60%);
-  color:var(--text);
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  padding:20px;
+.story-container {
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.wrap{
-  width:min(1100px, 100%);
-  background:rgba(21,21,40,.85);
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:18px;
-  box-shadow: 0 18px 60px rgba(0,0,0,.45);
-  overflow:hidden;
+h1 {
+  text-align: center;
 }
 
-header{
-  padding:18px;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  align-items:flex-end;
+.story-image img {
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-h1{margin:0; font-size:18px}
-.sub{margin:6px 0 0; color:var(--muted); font-size:13px}
-
-.controls{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  align-items:flex-end;
-  justify-content:flex-end;
+/* visual effect */
+.story-image img.zoom {
+  transform: scale(1.05);
 }
 
-.label{display:flex; flex-direction:column; gap:6px; font-size:12px; color:var(--muted)}
-input{
-  width:200px;
-  max-width:60vw;
-  padding:10px 12px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.06);
-  color:var(--text);
-  outline:none;
+.story-text {
+  margin-top: 16px;
+  text-align: center;
 }
 
-button{
-  padding:10px 12px;
-  border-radius:10px;
-  border:none;
-  cursor:pointer;
-  font-weight:700;
-  background: linear-gradient(90deg, var(--hot), #ff7aa8);
-  color:#1b0913;
-  transition: transform .15s ease, filter .15s ease;
-}
-button:hover{transform: translateY(-1px); filter:brightness(1.05)}
-button.secondary{
-  background: rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.14);
-  color:var(--text);
-  font-weight:600;
+.hidden {
+  display: none;
 }
 
-.stage{
-  display:grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap:16px;
-  padding:18px;
-}
-@media (max-width: 900px){
-  .stage{grid-template-columns:1fr}
-  input{width:100%}
+.story-progress {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  gap: 8px;
 }
 
-.imageCard{
-  position:relative;
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.25);
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
 }
 
-#storyImage{
-  width:100%;
-  display:block;
-  cursor:pointer;
-  user-select:none;
-  transition: transform .25s ease, filter .25s ease;
+.dot.active {
+  background: #d94b7d;
 }
 
-.tapHint{
-  position:absolute;
-  left:12px;
-  bottom:12px;
-  font-size:12px;
-  color:rgba(255,255,255,.86);
-  background: rgba(0,0,0,.35);
-  border:1px solid rgba(255,255,255,.12);
-  padding:6px 10px;
-  border-radius:999px;
-  backdrop-filter: blur(6px);
+.name-input {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
 }
-
-.heartsLayer{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-}
-
-.heart{
-  position:absolute;
-  font-size:20px;
-  opacity:0;
-  transform: translateY(10px) scale(.8);
-  animation: pop 700ms ease forwards;
-  text-shadow: 0 8px 18px rgba(0,0,0,.35);
-}
-@keyframes pop{
-  0%{opacity:0; transform: translateY(10px) scale(.8)}
-  45%{opacity:1; transform: translateY(-10px) scale(1.08)}
-  100%{opacity:0; transform: translateY(-24px) scale(1)}
-}
-
-.confetti{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  opacity:0;
-  transition: opacity .25s ease;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(255,77,136,.9) 0 2px, transparent 3px),
-    radial-gradient(circle at 30% 60%, rgba(124,219,255,.9) 0 2px, transparent 3px),
-    radial-gradient(circle at 55% 35%, rgba(255,255,255,.85) 0 2px, transparent 3px),
-    radial-gradient(circle at 75% 70%, rgba(255,77,136,.9) 0 2px, transparent 3px),
-    radial-gradient(circle at 90% 30%, rgba(124,219,255,.9) 0 2px, transparent 3px);
-}
-
-.confetti.on{opacity:1}
-
-.right{
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.18);
-  border-radius:16px;
-  padding:14px;
-}
-
-.step{margin:0 0 6px; color:var(--muted); font-size:12px}
-h2{margin:0 0 10px; font-size:18px}
-#storyText{margin:0 0 12px; line-height:1.35}
-
-.box{
-  display:none;
-  border-radius:14px;
-  border:1px dashed rgba(255,77,136,.45);
-  background: rgba(255,77,136,.12);
-  padding:10px 12px;
-  margin: 10px 0 12px;
-}
-.boxTitle{font-weight:800; font-size:12px; margin-bottom:6px}
-#secretText{margin:0; color:#ffd6e5}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:10px;
-}
-
-.pill{
-  background: rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
-  color:var(--text);
-  padding:10px 12px;
-  border-radius:12px;
-  cursor:pointer;
-  transition: transform .15s ease, filter .15s ease;
-  font-weight:700;
-}
-.pill:hover{transform: translateY(-1px); filter:brightness(1.05)}
-.pill.bad{border-color: rgba(255,77,136,.35)}
-.pill.good{border-color: rgba(124,219,255,.35)}
-
-.meter{
-  margin-top:12px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.18);
-  border-radius:16px;
-  padding:12px;
-}
-.meterTop{
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:8px;
-}
-.bar{
-  height:12px;
-  border-radius:999px;
-  background: rgba(255,255,255,.08);
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.10);
-}
-.fill{
-  height:100%;
-  width:50%;
-  border-radius:999px;
-  background: linear-gradient(90deg, var(--hot), var(--blue));
-  transition: width .25s ease;
-}
-
-.glow #storyImage{
-  filter: drop-shadow(0 0 14px rgba(255,77,136,.45)) drop-shadow(0 0 22px rgba(124,219,255,.22));
-  transform: scale(1.01);
-}
-.shake #storyImage{
-  animation: shake 450ms ease;
-}
-@keyframes shake{
-  0%{transform:translateX(0)}
-  20%{transform:translateX(-6px)}
-  40%{transform:translateX(6px)}
-  60%{transform:translateX(-4px)}
-  80%{transform:translateX(4px)}
-  100%{transform:translateX(0)}
-}
-
-.footer{margin-top:14px; color:var(--muted); font-size:12px}
