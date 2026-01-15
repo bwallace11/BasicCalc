@@ -1,38 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mothman + Nessie Valentine</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="calculator">
-        <div class="display" id="display">0</div>
-        <div class="buttons">
-            <button class="clear" onclick="clearDisplay()">C</button>
-            <button class="operator" onclick="aOperator('/')">/</button>
-            <button class="operator" onclick="aOperator('*')">×</button>
-            
-            <button onclick="aNumber('7')">7</button>
-            <button onclick="aNumber('8')">8</button>
-            <button onclick="aNumber('9')">9</button>
-            <button class="operator" onclick="aOperator('-')">-</button>
-            
-            <button onclick="aNumber('4')">4</button>
-            <button onclick="aNumber('5')">5</button>
-            <button onclick="aNumber('6')">6</button>
-            <button class="operator" onclick="aOperator('+')">+</button>
-            
-            <button onclick="aNumber('1')">1</button>
-            <button onclick="aNumber('2')">2</button>
-            <button onclick="aNumber('3')">3</button>
-            <button onclick="aNumber('.')">.</button>
-            
-            <button onclick="Number('0')">0</button>
-            <button class="equals" onclick="calculate()">=</button>
+
+  <div class="wrap sparkle" id="app">
+    <div class="confetti" id="confetti"></div>
+
+    <header>
+      <h1>Mothman + Nessie: Valentine’s Date Night</h1>
+
+      <div class="controls">
+        <label>
+          Your name:
+          <input id="nameInput" type="text" placeholder="Your name" />
+        </label>
+        <button id="saveNameBtn">Save name</button>
+        <button id="resetBtn" class="secondary">Reset</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="stage">
+        <div class="image-card" id="imageCard">
+          <img id="storyImage" alt="Story scene" />
+          <div class="hint">Click the image to continue the story</div>
         </div>
-    </div>
-    </body>
+
+        <div class="text-card">
+          <p class="step" id="stepLabel"></p>
+          <p id="storyText"></p>
+          <p id="secretText"></p>
+
+          <div class="buttons">
+            <button id="revealBtn" class="secondary">Reveal note</button>
+            <button id="toggleSparkleBtn" class="secondary">Toggle sparkle</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span id="saveStatus">Progress not saved yet</span>
+    </footer>
+
+    <!-- Optional sound -->
+    <audio id="clickSound" src="click.mp3" preload="auto"></audio>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
 </html>
