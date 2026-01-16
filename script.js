@@ -119,6 +119,7 @@ async function updateStory() {
   
   await new Promise(resolve => setTimeout(resolve, 100));
 
+  // Type out the caption
   if (currentStep === captions.length - 1) {
     caption.innerHTML = `<span class="final-message">Happy Valentine's Day!<br>${userName}</span>`;
     caption.classList.add('typing');
@@ -126,9 +127,7 @@ async function updateStory() {
     await typeWriter(captions[currentStep], caption);
   }
 
-  image.src = images[currentStep];
-  updateProgressDots(currentStep);
-
+  // Show special effects for final slide
   if (currentStep === captions.length - 1) {
     clickHint.classList.add('hidden');
     hearts.classList.add('show');
@@ -159,6 +158,11 @@ function updateProgressDots(step) {
 storyImageContainer.addEventListener('click', function() {
   if (nameIntro.classList.contains('hidden') && !isTyping && currentStep < captions.length - 1) {
     currentStep++;
+    
+    // Update image and progress BEFORE typing starts
+    image.src = images[currentStep];
+    updateProgressDots(currentStep);
+    
     updateStory();
   }
 });
@@ -168,6 +172,11 @@ dots.forEach((dot, index) => {
     if (!nameIntro.classList.contains('hidden') || isTyping) return;
     if (index <= currentStep) {
       currentStep = index;
+      
+      // Update image and progress BEFORE typing starts
+      image.src = images[currentStep];
+      updateProgressDots(currentStep);
+      
       updateStory();
     }
   });
@@ -181,6 +190,11 @@ startButton.addEventListener('click', function() {
   
   nameIntro.classList.add('hidden');
   currentStep = 0;
+  
+  // Set initial image and progress
+  image.src = images[currentStep];
+  updateProgressDots(currentStep);
+  
   saveProgress();
   updateStory();
 });
