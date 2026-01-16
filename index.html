@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mothman & Nessie Valentine</title>
-  <link rel="stylesheet" href="styles/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mothman & Nessie: A Valentine's Tale</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+  <main class="story-container">
+    <div class="name-intro" id="nameIntro">
+      <h2>💕 Enter Your Name 💕</h2>
+      <input type="text" id="nameInput" placeholder="Your name here...">
+      <button id="startButton">Begin Story</button>
+    </div>
 
-<main class="story-container">
+    <div class="story-header">
+      <h1>💕 Mothman & Nessie 💕</h1>
+      <p>A Valentine's Day Tale</p>
+    </div>
 
-  <div class="story-image">
-    <img 
-      src="assets/images/image-1.jpg" 
-      alt="Mothman waiting on Valentine’s Day"
-      id="story-image"
-    />
-  </div>
+    <div class="story-image">
+      <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=800&h=400&fit=crop" alt="Story scene" id="storyImage">
+      <div class="click-hint" id="clickHint">Click to continue →</div>
+      <div class="hearts" id="hearts">💕✨💕</div>
+    </div>
 
-  <div class="story-text">
-    <p id="story-caption">Click the image to start the date.</p>
-  </div>
+    <div class="story-text">
+      <p id="story-caption"></p>
+    </div>
 
-  <button id="reset-btn">Reset Story</button>
+    <div class="story-progress">
+      <span class="dot active" data-step="0"></span>
+      <span class="dot" data-step="1"></span>
+      <span class="dot" data-step="2"></span>
+      <span class="dot" data-step="3"></span>
+      <span class="dot" data-step="4"></span>
+      <span class="dot" data-step="5"></span>
+    </div>
 
-  <div class="story-progress">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
+    <button class="reset-button" id="resetButton">Start Over</button>
+  </main>
 
-</main>
-
-<!-- Name Popup -->
-<div class="modal hidden" id="name-modal">
-  <div class="modal-content">
-    <p>Who should Mothman dedicate this Valentine to?</p>
-    <input type="text" id="name-input" placeholder="Your name" />
-    <button id="submit-name">Submit</button>
-  </div>
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
