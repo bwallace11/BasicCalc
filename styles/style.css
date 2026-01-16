@@ -198,7 +198,7 @@ body::after {
   transform: scale(0.95);
 }
 
-.click-hint {
+.click-continue {
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -216,7 +216,7 @@ body::after {
   box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
 }
 
-.click-hint.hidden {
+.click-continue.hidden {
   opacity: 0;
 }
 
