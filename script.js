@@ -31,6 +31,39 @@ const captions = [
   "Under a sky full of stars, Mothman and Nessie promised to meet every Valentine's Day. True love knows no bounds—not even between a cryptid moth and a legendary lake monster. 💕"
 ];
 
+// Load saved progress from localStorage
+function loadProgress() {
+  const savedStep = localStorage.getItem('storyStep');
+  const savedName = localStorage.getItem('userName');
+  
+  if (savedStep !== null) {
+    currentStep = parseInt(savedStep);
+  }
+  
+  if (savedName !== null) {
+    userName = savedName;
+    nameInput.value = savedName;
+  }
+  
+  // If there's saved progress, hide the name intro and show the story
+  if (savedStep !== null && savedName !== null) {
+    nameIntro.classList.add('hidden');
+    updateStory();
+  }
+}
+
+// Save progress to localStorage
+function saveProgress() {
+  localStorage.setItem('storyStep', currentStep.toString());
+  localStorage.setItem('userName', userName);
+}
+
+// Clear progress from localStorage
+function clearProgress() {
+  localStorage.removeItem('storyStep');
+  localStorage.removeItem('userName');
+}
+
 function typeWriter(text, element, speed = 30) {
   return new Promise((resolve) => {
     element.textContent = '';
@@ -86,6 +119,9 @@ async function updateStory() {
     storyImageContainer.classList.remove('clicked');
   }, 300);
 
+  // Save progress after updating
+  saveProgress();
+  
   isTyping = false;
 }
 
@@ -124,6 +160,7 @@ startButton.addEventListener('click', function() {
   
   nameIntro.classList.add('hidden');
   currentStep = 0;
+  saveProgress();
   updateStory();
 });
 
@@ -134,9 +171,27 @@ nameInput.addEventListener('keypress', function(e) {
 });
 
 resetButton.addEventListener('click', function() {
+  // Clear localStorage and reset everything
+  clearProgress();
+  
   currentStep = 0;
   hearts.classList.remove('show');
   clickHint.classList.remove('hidden');
   resetButton.classList.remove('show');
-  updateStory();
+  
+  // Show name input again
+  nameIntro.classList.remove('hidden');
+  nameInput.value = '';
+  userName = "Friend";
+  
+  // Reset the display
+  caption.classList.remove('typing');
+  caption.textContent = '';
+  image.src = images[0];
+  updateProgress(0);
+});
+
+// Load progress when page loads
+window.addEventListener('DOMContentLoaded', function() {
+  loadProgress();
 });
