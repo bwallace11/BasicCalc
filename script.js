@@ -45,10 +45,31 @@ function loadProgress() {
     nameInput.value = savedName;
   }
   
-  // If there's saved progress, hide the name intro and show the story
+  // If there's saved progress, hide the name intro and display the saved state
   if (savedStep !== null && savedName !== null) {
     nameIntro.classList.add('hidden');
-    updateStory();
+    displayCurrentState();
+  }
+}
+
+// Display current state without auto-advancing
+function displayCurrentState() {
+  // Update image
+  image.src = images[currentStep];
+  
+  // Update progress dots
+  updateProgressDots(currentStep);
+  
+  // Display caption without typewriter effect for saved state
+  if (currentStep === captions.length - 1) {
+    caption.innerHTML = `<span class="final-message">Happy Valentine's Day!<br>${userName}</span>`;
+    caption.classList.add('typing');
+    clickHint.classList.add('hidden');
+    hearts.classList.add('show');
+    resetButton.classList.add('show');
+  } else {
+    caption.textContent = captions[currentStep];
+    caption.classList.add('typing');
   }
 }
 
@@ -64,7 +85,7 @@ function clearProgress() {
   localStorage.removeItem('userName');
 }
 
-function typeWriter(text, element, speed = 30) {
+function typeWriter(text, element, speed = 33) {
   return new Promise((resolve) => {
     element.textContent = '';
     element.classList.add('typing');
@@ -106,7 +127,7 @@ async function updateStory() {
   }
 
   image.src = images[currentStep];
-  updateProgress(currentStep);
+  updateProgressDots(currentStep);
 
   if (currentStep === captions.length - 1) {
     clickHint.classList.add('hidden');
@@ -125,7 +146,7 @@ async function updateStory() {
   isTyping = false;
 }
 
-function updateProgress(step) {
+function updateProgressDots(step) {
   dots.forEach((dot, index) => {
     if (index <= step) {
       dot.classList.add('active');
@@ -188,7 +209,7 @@ resetButton.addEventListener('click', function() {
   caption.classList.remove('typing');
   caption.textContent = '';
   image.src = images[0];
-  updateProgress(0);
+  updateProgressDots(0);
 });
 
 // Load progress when page loads
