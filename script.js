@@ -14,12 +14,11 @@ let userName = "Friend";
 let isTyping = false;
 
 const images = [
-  "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=800&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1518895312237-a9e23508077d?w=800&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=800&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=800&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=800&h=400&fit=crop"
+'assets/images/M&NVD1.jpg',
+'assets/images/M&NVD2.jpg',
+'assets/images/M&NVD3.jpg',
+'assets/images/M&NVD4.jpg',
+'assets/images/M&NVD6.jpg'
 ];
 
 const captions = [

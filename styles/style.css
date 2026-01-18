@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Quicksand', sans-serif;
-  background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd4e8 100%);
+  background: linear-gradient(135deg, #1A030c 0%, #792453 50%, #330027 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -44,18 +44,18 @@ body::after {
 }
 
 .story-container {
-  background: white;
+  background: #400716;
   border-radius: 30px;
   box-shadow: 0 20px 60px rgba(255, 105, 180, 0.2);
   max-width: 900px;
   width: 100%;
   overflow: hidden;
   position: relative;
-  border: 3px solid #ffb3d9;
+  border: 3px solid #730a26;
 }
 
 .story-header {
-  background: linear-gradient(135deg, #ff69b4 0%, #ff85c1 100%);
+  background: #400716;
   padding: 40px;
   text-align: center;
   position: relative;
@@ -88,15 +88,15 @@ body::after {
   font-family: 'Pacifico', cursive;
   font-size: 3em;
   margin-bottom: 10px;
-  color: #fff;
+  color: #ff7e9d;
   text-shadow: 
-    0 0 5px rgba(255, 255, 255, 0.5),
-    0 0 10px rgba(255, 192, 203, 0.3);
+    0 0 5px rgba(5, 1, 1, 0.5),
+    0 0 10px rgba(8, 2, 3, 0.466);
 }
 
 .story-header p {
   font-size: 1.3em;
-  color: #fff;
+  color: #ff7e9d;
   font-weight: 600;
 }
 
@@ -123,11 +123,11 @@ body::after {
 .name-intro h2 {
   font-family: 'Pacifico', cursive;
   font-size: 2.5em;
-  color: #ff69b4;
+  color:  #ff7e9d;
   margin-bottom: 30px;
   text-shadow: 
-    0 0 3px rgba(255, 105, 180, 0.3),
-    0 0 6px rgba(255, 192, 203, 0.2);
+    0 0 5px rgba(5, 1, 1, 0.5),
+    0 0 10px rgba(8, 2, 3, 0.466);
 }
 
 .name-intro input {
